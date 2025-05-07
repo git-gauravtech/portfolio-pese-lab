@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #726bfd;
+            --secondary-color: #636ed2;
+            --accent-color: #c7d2fe;
+            --light-bg: #f9fafb;
+            --dark-bg: #1e1b4b;
+            --text-dark: #112041;
+            --text-light: #f3f4f6;
+            --border-radius: 10px;
+            --box-shadow: 0 10px 15px -3px rgba(13, 13, 13, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-bg));
+            color: var(--text-light);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 5rem;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .profile-photo-holder {
+            width: 300px;
+            height: 350px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            position: relative;
+            background-color: var(--accent-color);
+            box-shadow: var(--box-shadow);
+        }
+
+        .profile-photo-holder img {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            object-fit: cover;
+        }
+
+        .profile-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;;
+            color: var(--dark-bg);
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .header-text {
+            flex-grow: 1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .intro {
+            max-width: 600px;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            color: var(--dark-bg);
+            display: inline-block;
+            padding: 0 2rem;
+            background-color: var(--light-bg);
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #e5e7eb;
+            z-index: 1;
+        }
+
+        /* About Section */
+        .about-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .about-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .about-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .about-card h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .about-card p {
+            color: #4b5563;
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .skill-category h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+
+        .skill-item .skill-name {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-progress {
+            width: 100%;
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 4px;
+        }
+
+        /* PESE Lab Activity Section */
+        .pese-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .activity-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+
+        .activity-header {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .activity-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-date {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .activity-content {
+            padding: 2rem;
+        }
+
+        .activity-content p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .activity-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .gallery-item {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            aspect-ratio: 1;
+            background-color: var(--accent-color);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Additional Sections */
+        .education-container, .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card, .project-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .education-card-header, .project-card-header {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .education-card-body, .project-card-body {
+            padding: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-section h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Designs */
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            h1::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .intro {
+                margin: 0 auto 2rem;
+            }
+
+            .contact-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .about-container, .education-container, .projects-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="profile-container">
+                <div class="profile-photo-holder">
+                    <div class="profile-photo-placeholder">
+                        <img src="data:image/jpeg;base64,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" alt="Profile Photo" class="profile-photo">
+                    </div>
+                </div>
+            </div>
+            <div class="header-text">
+                <h1>Gaurav Saklani</h1>
+                <p class="tagline">B.tech Second Year Student</p>
+                <p class="intro">Welcome to my portfolio! I am passionate about creating meaningful digital experiences and continuously learning new technologies. This space showcases my skills, projects, and academic journey including my PESE class activities.</p>
+                <div class="contact-links">
+                    <a href="mailto:yourname@email.com" class="contact-btn">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="contact-btn">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com" target="_blank" class="contact-btn">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="#" class="contact-btn">
+                        <i class="fas fa-file-alt"></i> Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#pese">PESE Lab</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Me Section -->
+        <section id="about">
+            <div class="container">
+                <div class="section-title">
+                    <h2>About Me</h2>
+                </div>
+                <div class="about-container">
+                    <div class="about-card">
+                        <h3>Who I Am</h3>
+                        <p>I am a dedicated student with a passion for technology and innovation. My academic journey has equipped me with strong problem-solving skills and the ability to adapt to new challenges. I believe in continuous learning and applying knowledge to create meaningful solutions.</p>
+                    </div>
+                    <div class="about-card">
+                        <h3>My Journey</h3>
+                        <p>My interest in technology began at an early age when I first started exploring computer programming. Since then, I've been on a journey of growth and discovery, constantly expanding my skillset and knowledge base through formal education and personal projects.</p>
+                    </div>
+                    <div class="about-card">
+                        <h3>My Vision</h3>
+                        <p>I aim to leverage technology to create positive change and solve real-world problems. Whether it's developing user-friendly applications or implementing innovative solutions, my goal is to make a meaningful impact through my work and continue growing as a professional.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" style="background-color: #f3f4f6;">
+            <div class="container">
+                <div class="section-title">
+                    <h2>My Skills</h2>
+                </div>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Technical Skills</h3>
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <div class="skill-name">
+                                    <span>HTML/CSS</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-bar" style="width: 90%"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-name">
+                                    <span>JavaScript</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-bar" style="width: 85%"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-name">
+                                    <span>Python</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-bar" style="width: 80%"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-name">
+                                    <span>React</span>
+                                    <span>75%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-bar" style="width: 75%"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Design Skills</h3>
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <div class="skill-name">
+                                    <span>UI/UX Design</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-bar" style="width: 80%"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-name">
+                                    <span>Adobe Photoshop</span>
+                                    <span>70%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-bar" style="width: 70%"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-name">
+                                    <span>Figma</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-bar" style="width: 85%"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-name">
+                                    <span>Responsive Design</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-bar" style="width: 90%"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Soft Skills</h3>
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <div class="skill-name">
+                                    <span>Team Collaboration</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-bar" style="width: 95%"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-name">
+                                    <span>Problem Solving</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-bar" style="width: 90%"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-name">
+                                    <span>Time Management</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-bar" style="width: 85%"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-name">
+                                    <span>Adaptability</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-bar" style="width: 90%"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PESE Lab Activity Section -->
+        <section id="pese">
+            <div class="container">
+                <div class="section-title">
+                    <h2>PESE Lab Activities</h2>
+                </div>
+                <div class="pese-container">
+                    <!-- Activity 1 -->
+                    <div class="activity-card">
+                        <div class="activity-header">
+                            <div class="activity-meta">
+                                <span class="activity-week">Week 1</span>
+                                <span class="activity-date">January 15, 2025</span>
+                            </div>
+                            <h3 class="activity-title">Introduction to Physical Computing</h3>
+                        </div>
+                        <div class="activity-content">
+                            <p>In our first PESE lab session, we explored the fundamentals of physical computing and its applications in everyday life. The session began with an introduction to various sensors and microcontrollers that form the backbone of modern IoT devices.</p>
+                            <p>During the hands-on portion, we assembled basic circuits using Arduino boards and learned how to write simple programs to control LED lights and read sensor data. This gave us a practical understanding of how software interacts with hardware components.</p>
+                            <p>Key concepts covered:</p>
+                            <ul>
+                                <li>Basics of electrical circuits</li>
+                                <li>Introduction to Arduino programming</li>
+                                <li>Working with digital inputs and outputs</li>
+                                <li>Understanding sensor data collection</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Activity 2 -->
+                    <div class="activity-card">
+                        <div class="activity-header">
+                            <div class="activity-meta">
+                                <span class="activity-week">Week 2</span>
+                                <span class="activity-date">January 22, 2025</span>
+                            </div>
+                            <h3 class="activity-title">Data Visualization Techniques</h3>
+                        </div>
+                        <div class="activity-content">
+                            <p>This week's PESE lab focused on techniques for visualizing data collected from various sensors. We learned how to process raw sensor data and transform it into meaningful visual representations that can be easily interpreted.</p>
+                            <p>The session featured a workshop on using Processing and Python libraries such as Matplotlib and Seaborn to create interactive visualizations. We worked with real-time data streams from temperature and motion sensors to create dynamic graphs and charts.</p>
+                            <p>By the end of the session, each team had created a dashboard that displayed various environmental metrics collected from our lab environment. This exercise demonstrated the importance of effective data visualization in interpreting complex datasets.</p>
+                            <p>Projects completed:</p>
+                            <ul>
+                                <li>Real-time temperature monitoring system</li>
+                                <li>Motion pattern visualization</li>
+                                <li>Environmental data dashboard</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Activity 3 -->
+                    <div class="activity-card">
+                        <div class="activity-header">
+                            <div class="activity-meta">
+                                <span class="activity-week">Week 3</span>
+                                <span class="activity-date">January 29, 2025</span>
+                            </div>
+                            <h3 class="activity-title">Interactive Installation Design</h3>
+                        </div>
+                        <div class="activity-content">
+                            <p>Week 3 of our PESE lab introduced us to the principles of designing interactive installations that respond to human presence and behavior. We discussed how physical computing can be used to create engaging experiences in public spaces, museums, and art galleries.</p>
+                            <p>The practical component involved working in small groups to conceptualize and prototype a small-scale interactive installation. Using motion sensors, LEDs, speakers, and various microcontrollers, each group created a unique interactive experience that responded to user proximity, movement, or touch.</p>
+                            <p>Our instructor provided valuable feedback on each prototype, highlighting considerations for scalability, user experience, and technical robustness. We also discussed ethical considerations in designing installations that collect data from participants.</p>
+                            <p>Highlights from the session:</p>
+                            <ul>
+                                <li>Principles of interaction design</li>
+                                <li>Sensor fusion techniques</li>
+                                <li>Prototyping interactive experiences</li>
+                                <li>User testing methodologies</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" style="background-color: #f3f4f6;">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Education</h2>
+                </div>
+                <div class="education-container">
+                    <div class="education-card">
+                        <div class="education-card-header">
+                            <h3>Bachelor of Science in Computer Science</h3>
+                            <p>University Name | 2022 - Present</p>
+                        </div>
+                        <div class="education-card-body">
+                            <p>Currently pursuing a degree in Computer Science with a focus on software development and artificial intelligence. Maintaining a GPA of 3.8/4.0.</p>
+                            <p><strong>Relevant Coursework:</strong></p>
+                            <ul>
+                                <li>Data Structures and Algorithms</li>
+                                <li>Database Systems</li>
+                                <li>Web Development</li>
+                                <li>Machine Learning Fundamentals</li>
+                                <li>Physical Electronics and Embedded Systems (PESE)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="education-card">
+                        <div class="education-card-header">
+                            <h3>High School Diploma</h3>
+                            <p>High School Name | 2018 - 2022</p>
+                        </div>
+                        <div class="education-card-body">
+                            <p>Graduated with honors, focusing on STEM subjects. Participated in various extracurricular activities including Robotics Club and Coding Competitions.</p>
+                            <p><strong>Achievements:</strong></p>
+                            <ul>
+                                <li>First Place in Regional Science Fair</li>
+                                <li>President of Computer Science Club</li>
+                                <li>National Merit Scholar</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="education-card">
+                        <div class="education-card-header">
+                            <h3>Online Certifications</h3>
+                            <p>Various Platforms | 2020 - Present</p>
+                        </div>
+                        <div class="education-card-body">
+                            <ul>
+                                <li>Full Stack Web Development (Udemy, 2023)</li>
+                                <li>UI/UX Design Fundamentals (Coursera, 2022)</li>
+                                <li>Python for Data Science (edX, 2021)</li>
+                                <li>Responsive Web Design (freeCodeCamp, 2020)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Projects</h2>
+                </div>
+                <div class="projects-container">
+                    <div class="project-card">
+                        <div class="project-card-header">
+                            <h3>Smart Home Monitoring System</h3>
+                            <p>IoT Project | 2024</p>
+                        </div>
+                        <div class="project-card-body">
+                            <p>Developed a comprehensive smart home monitoring system using Arduino and Raspberry Pi. The system tracks temperature, humidity, motion, and energy consumption, providing real-time data through a web dashboard.</p>
+                            <p><strong>Technologies Used:</strong> Arduino, Raspberry Pi, MQTT, Node.js, React</p>
+                            <div class="project-links">
+                                <a href="#" class="contact-btn" style="background-color: var(--primary-color); color: white; margin-top: 1rem; display: inline-block;">
+                                    <i class="fab fa-github"></i> View on GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-card-header">
+                            <h3>Personal Finance Tracker</h3>
+                            <p>Web Application | 2023</p>
+                        </div>
+                        <div class="project-card-body">
+                            <p>Created a responsive web application that helps users track their income, expenses, and savings goals. Features include transaction categorization, budget planning, and visual reports of spending patterns.</p>
+                            <p><strong>Technologies Used:</strong> HTML5, CSS3, JavaScript, Chart.js, Firebase</p>
+                            <div class="project-links">
+                                <a href="#" class="contact-btn" style="background-color: var(--primary-color); color: white; margin-top: 1rem; display: inline-block;">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-card-header">
+                            <h3>AI-Powered Image Recognition</h3>
+                            <p>Machine Learning Project | 2024</p>
+                        </div>
+                        <div class="project-card-body">
+                            <p>Implemented a convolutional neural network (CNN) model to identify and classify objects in images. The model was trained on a custom dataset and achieved 92% accuracy in object recognition tasks.</p>
+                            <p><strong>Technologies Used:</strong> Python, TensorFlow, OpenCV, Google Colab</p>
+                            <div class="project-links">
+                                <a href="#" class="contact-btn" style="background-color: var(--primary-color); color: white; margin-top: 1rem; display: inline-block;">
+                                    <i class="fab fa-github"></i> View on GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       <!-- Contact Section -->
+<section id="contact" style="background-color: #f3f4f6;">
+    <div class="container">
+        <div class="section-title">
+            <h2>Get In Touch</h2>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto; background-color: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <!-- Web3Forms Access Key -->
+                <input type="hidden" name="access_key" value="5adf4f3d-f97e-4ae2-907a-ecbf2f999943">
+                <!-- Spam Protection -->
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                <!-- Redirect after submission -->
+                <input type="hidden" name="redirect" value="https://micromatch.onrender.com/">
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div>
+                        <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required style="width: 100%; padding: 0.75rem; border: 1px solid #e5e7eb; border-radius: 4px; font-family: inherit;">
+                    </div>
+                    <div>
+                        <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 0.75rem; border: 1px solid #e5e7eb; border-radius: 4px; font-family: inherit;">
+                    </div>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label for="subject" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Subject" required style="width: 100%; padding: 0.75rem; border: 1px solid #e5e7eb; border-radius: 4px; font-family: inherit;">
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label for="message" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Message</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Your Message" required style="width: 100%; padding: 0.75rem; border: 1px solid #e5e7eb; border-radius: 4px; resize: vertical; font-family: inherit;"></textarea>
+                </div>
+                <button type="submit" style="background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 4px; cursor: pointer; font-weight: 500; transition: transform 0.3s ease;">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>This portfolio showcases my skills, projects, and academic journey. Feel free to explore and reach out if you'd like to connect or collaborate on a project.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-section footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#pese">PESE Lab</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <div class="footer-contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Graphic Era hill University, Dehradun, India</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>gauravsaklani47@email.com</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>91+ 8273705684</span>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2025 Your Name. All Rights Reserved.</p>
+       
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add active class to navigation links based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
