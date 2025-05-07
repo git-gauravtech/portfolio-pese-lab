@@ -28,12 +28,14 @@
             background-color: var(--light-bg);
             color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+            width: 100%;
         }
 
         /* Header Section */
@@ -217,6 +219,16 @@
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         /* Main Content Sections */
@@ -447,6 +459,62 @@
             padding: 2rem;
         }
 
+        /* Contact Form */
+        .contact-form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-field {
+            margin-bottom: 1rem;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-field input,
+        .form-field textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .form-field textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
         /* Footer */
         footer {
             background-color: var(--dark-bg);
@@ -536,11 +604,26 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Responsive Designs */
+        /* Enhanced Responsive Designs */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+        }
+        
         @media (max-width: 992px) {
             .header-content {
                 flex-direction: column;
                 text-align: center;
+                gap: 3rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
             }
 
             h1::after {
@@ -555,20 +638,194 @@
             .contact-links {
                 justify-content: center;
             }
+            
+            .section-title h2 {
+                font-size: 2.25rem;
+            }
+            
+            .profile-photo-holder {
+                width: 250px;
+                height: 300px;
+            }
         }
 
         @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+            
+            /* Mobile Navigation */
+            .mobile-nav-toggle {
+                display: block;
+                z-index: 101;
+            }
+            
             .nav-container {
+                position: relative;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: white;
                 flex-direction: column;
-                gap: 1rem;
+                padding: 5rem 2rem 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 100;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 0.5rem 0;
             }
 
             .section-title h2 {
                 font-size: 2rem;
+                padding: 0 1rem;
             }
 
-            .about-container, .education-container, .projects-container {
+            .form-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.25rem;
+            }
+            
+            .tagline {
+                font-size: 1.25rem;
+            }
+            
+            .about-container, .education-container, .projects-container, .skills-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .profile-photo-holder {
+                width: 200px;
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            section {
+                padding: 2.5rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.75rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .intro {
+                font-size: 1rem;
+            }
+            
+            .activity-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .activity-title {
+                font-size: 1.25rem;
+            }
+            
+            .about-card, .education-card, .project-card, .skill-category {
+                padding: 1.5rem;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+            }
+            
+            .contact-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #f3f4f6;
+            }
+            
+            .about-card, .education-card, .project-card, .skill-category, .activity-card, .contact-form-container {
+                background-color: #1f1f1f;
+                color: #f3f4f6;
+            }
+            
+            .about-card p, .education-card p, .project-card p {
+                color: #d1d5db;
+            }
+            
+            nav {
+                background-color: #1f1f1f;
+            }
+            
+            .nav-links a {
+                color: #f3f4f6;
+            }
+            
+            .section-title h2 {
+                background-color: #121212;
+                color: #f3f4f6;
+            }
+            
+            .form-field input, .form-field textarea {
+                background-color: #2d2d2d;
+                border-color: #3d3d3d;
+                color: #f3f4f6;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
